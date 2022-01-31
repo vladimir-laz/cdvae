@@ -110,19 +110,19 @@ def run(cfg: DictConfig) -> None:
 
     # Logger instantiation/configuration
     wandb_logger = None
-    if "wandb" in cfg.logging:
-        hydra.utils.log.info("Instantiating <WandbLogger>")
-        wandb_config = cfg.logging.wandb
-        wandb_logger = WandbLogger(
-            **wandb_config,
-            tags=cfg.core.tags,
-        )
-        hydra.utils.log.info("W&B is now watching <{cfg.logging.wandb_watch.log}>!")
-        wandb_logger.watch(
-            model,
-            log=cfg.logging.wandb_watch.log,
-            log_freq=cfg.logging.wandb_watch.log_freq,
-        )
+    # if "wandb" in cfg.logging:
+    #     hydra.utils.log.info("Instantiating <WandbLogger>")
+    #     wandb_config = cfg.logging.wandb
+    #     wandb_logger = WandbLogger(
+    #         **wandb_config,
+    #         tags=cfg.core.tags,
+    #     )
+    #     hydra.utils.log.info("W&B is now watching <{cfg.logging.wandb_watch.log}>!")
+    #     wandb_logger.watch(
+    #         model,
+    #         log=cfg.logging.wandb_watch.log,
+    #         log_freq=cfg.logging.wandb_watch.log_freq,
+    #     )
 
     # Store the YaML config separately into the wandb dir
     yaml_conf: str = OmegaConf.to_yaml(cfg=cfg)
@@ -148,7 +148,7 @@ def run(cfg: DictConfig) -> None:
         resume_from_checkpoint=ckpt,
         **cfg.train.pl_trainer,
     )
-    log_hyperparameters(trainer=trainer, model=model, cfg=cfg)
+    # log_hyperparameters(trainer=trainer, model=model, cfg=cfg)
 
     hydra.utils.log.info("Starting training!")
     trainer.fit(model=model, datamodule=datamodule)

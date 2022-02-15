@@ -163,7 +163,9 @@ def run(cfg: DictConfig) -> None:
 
 @hydra.main(config_path=str(PROJECT_ROOT / "conf"), config_name="default")
 def main(cfg: omegaconf.DictConfig):
-    run(cfg)
+    print(OmegaConf.to_yaml(cfg))
+    
+    # run(cfg)
 
 
 if __name__ == "__main__":

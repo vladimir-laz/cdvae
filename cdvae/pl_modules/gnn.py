@@ -3,7 +3,7 @@
 
 import torch
 import torch.nn as nn
-from torch_scatter import scatter
+# from torch_scatter import scatter
 from torch_geometric.nn.acts import swish
 from torch_geometric.nn.inits import glorot_orthogonal
 from torch_geometric.nn.models.dimenet import (
@@ -12,7 +12,7 @@ from torch_geometric.nn.models.dimenet import (
     ResidualLayer,
     SphericalBasisLayer,
 )
-from torch_sparse import SparseTensor
+# from torch_sparse import SparseTensor
 
 from cdvae.common.data_utils import (
     get_pbc_distances,

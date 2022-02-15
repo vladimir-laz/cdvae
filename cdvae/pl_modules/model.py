@@ -17,6 +17,11 @@ from cdvae.common.data_utils import (
 from cdvae.pl_modules.embeddings import MAX_ATOMIC_NUM
 from cdvae.pl_modules.embeddings import KHOT_EMBEDDINGS
 
+# load encoder
+from cdvae.pl_modules.gnn import GemNetTEncoder
+# load decoder
+from cdvae.pl_modules.decoder import GemNetTDecoder
+
 
 def build_mlp(in_dim, hidden_dim, fc_num_layers, out_dim):
     mods = [nn.Linear(in_dim, hidden_dim), nn.ReLU()]
